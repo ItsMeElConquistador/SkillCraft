@@ -1,0 +1,46 @@
+Skill System
+	Skills
+		Unlocks
+			Level
+			Block/Item
+	Players
+		Skills
+			Level
+			Exp
+			
+			
+			
+Server 
+	Player data
+	
+Client
+	Own data
+	Part of player data
+	
+	
+Packets
+	Server to client
+		1. Skill update (on get exp or join)
+			Skill
+			Level
+			Exp
+		2. Simple skill update (on levelup or join)
+			Player
+			Skill
+			Level
+			
+
+			
+Mining
+Woodcutting
+Excavation
+Farming
+Smithing
+Cooking
+Combat
+Archery
+Defense
+Alchemy
+Taming
+Crafting
+Fishing
