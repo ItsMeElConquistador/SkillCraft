@@ -1,0 +1,24 @@
+lvl * lvl * 100
+
+lvl 	xp
+1		0
+2		100
+3 		400
+4		900
+5		1600
+
+10		8100
+
+50		240100
+
+100		980100
+max		1000000
+
+
+xp needed = lvl * lvl * 100
+xp at lvl start = (lvl - 1) * (lvl - 1) * 100
+
+current xp needed = xp needed - xp
+current xp = xp - xp at lvl start
+
+level up: xp >= xp needed
