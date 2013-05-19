@@ -23,7 +23,7 @@ public class SkillCraft {
 	
 	@PreInit
 	public void preInit(FMLPreInitializationEvent event) {
-		
+		PlayerSkill.calculateNeeded();
 	}
 	
 	@Init

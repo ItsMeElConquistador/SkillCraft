@@ -6,6 +6,8 @@ public class Skill {
 	
 	public static Skill[] skills = new Skill[32];
 	
+	public static int skillCount = 0;
+	
 	public static Skill mining = new SkillMining(0, "Mining");
 	
 	public int id;
@@ -19,6 +21,7 @@ public class Skill {
 		
 		registerUnlocks();
 		
+		skillCount++;
 		skills[id] = this;
 	}
 	
