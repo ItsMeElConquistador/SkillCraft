@@ -16,7 +16,7 @@ Server
 Client
 	Own data
 	Part of player data
-	
+
 	
 Packets
 	Server to client
