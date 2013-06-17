@@ -1,9 +1,13 @@
 package elcon.mods.skillcraft;
 
+import java.io.Serializable;
+
 import elcon.mods.skillcraft.skills.Skill;
 
-public class SkillPlayer {
+public class SkillPlayer implements Serializable {
 
+	private static final long serialVersionUID = 1L;
+	
 	public String player;
 	public PlayerSkill[] skills = new PlayerSkill[Skill.skills.length];
 	

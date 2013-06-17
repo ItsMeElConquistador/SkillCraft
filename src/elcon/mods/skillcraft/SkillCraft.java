@@ -1,5 +1,6 @@
 package elcon.mods.skillcraft;
 
+import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.Init;
 import cpw.mods.fml.common.Mod.Instance;
@@ -29,6 +30,10 @@ public class SkillCraft {
 	@Init
 	public void init(FMLInitializationEvent event) {
 		proxy.registerRenderInformation();
+		
+		//register event handler
+		SCEventHandler eventHandler = new SCEventHandler();
+		MinecraftForge.EVENT_BUS.register(eventHandler);
 	}
 	
 	@PostInit

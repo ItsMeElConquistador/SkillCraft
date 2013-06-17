@@ -1,7 +1,11 @@
 package elcon.mods.skillcraft;
 
-public class PlayerSkill {
+import java.io.Serializable;
+
+public class PlayerSkill implements Serializable {
 	
+	private static final long serialVersionUID = 1L;
+
 	private static int[] needed = new int[100];
 	
 	public int skillID;
