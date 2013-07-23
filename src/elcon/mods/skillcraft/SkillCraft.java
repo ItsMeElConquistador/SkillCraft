@@ -2,10 +2,8 @@ package elcon.mods.skillcraft;
 
 import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
-import cpw.mods.fml.common.Mod.Init;
+import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
-import cpw.mods.fml.common.Mod.PostInit;
-import cpw.mods.fml.common.Mod.PreInit;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
@@ -22,12 +20,12 @@ public class SkillCraft {
 	@SidedProxy(clientSide = "elcon.mods.skillcraft.ClientProxy", serverSide = "elcon.mods.skillcraft.CommonProxy")
 	public static CommonProxy proxy;
 	
-	@PreInit
+	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		PlayerSkill.calculateNeeded();
 	}
 	
-	@Init
+	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		proxy.registerRenderInformation();
 		
@@ -36,7 +34,7 @@ public class SkillCraft {
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 	}
 	
-	@PostInit
+	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		
 	}
