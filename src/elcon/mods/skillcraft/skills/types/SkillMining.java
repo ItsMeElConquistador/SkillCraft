@@ -1,5 +1,7 @@
-package elcon.mods.skillcraft.skills;
+package elcon.mods.skillcraft.skills.types;
 
+import elcon.mods.skillcraft.skills.Skill;
+import elcon.mods.skillcraft.skills.SkillUnlock;
 import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 

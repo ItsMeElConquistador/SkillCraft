@@ -1,10 +1,19 @@
-package elcon.mods.skillcraft;
+package elcon.mods.skillcraft.skills;
 
 import java.util.HashMap;
 
-public class SkillServer {
+public class SkillClient {
 
+	public static SkillPlayer player;
 	public static HashMap<String, SkillPlayer> players = new HashMap<String, SkillPlayer>();
+	
+	public static SkillPlayer getPlayer() {
+		return player;
+	}
+	
+	public static void setPlayer(SkillPlayer skillPlayer) {
+		player = skillPlayer;
+	}
 	
 	public static SkillPlayer getPlayer(String player) {
 		if(players.containsKey(player)) {

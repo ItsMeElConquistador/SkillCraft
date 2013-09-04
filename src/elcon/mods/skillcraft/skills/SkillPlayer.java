@@ -1,8 +1,7 @@
-package elcon.mods.skillcraft;
+package elcon.mods.skillcraft.skills;
 
 import java.io.Serializable;
 
-import elcon.mods.skillcraft.skills.Skill;
 
 public class SkillPlayer implements Serializable {
 

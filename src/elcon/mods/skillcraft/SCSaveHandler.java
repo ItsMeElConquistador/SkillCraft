@@ -11,6 +11,9 @@ import java.util.HashMap;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
+import elcon.mods.skillcraft.skills.SkillPlayer;
+import elcon.mods.skillcraft.skills.SkillServer;
+
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.storage.AnvilChunkLoader;
 import net.minecraft.world.chunk.storage.IChunkLoader;

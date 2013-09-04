@@ -2,6 +2,8 @@ package elcon.mods.skillcraft.skills;
 
 import java.util.ArrayList;
 
+import elcon.mods.skillcraft.skills.types.SkillMining;
+
 public class Skill {
 	
 	public static Skill[] skills = new Skill[32];
