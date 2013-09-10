@@ -29,7 +29,7 @@ public class SkillCraft {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ElConCore.registerMod(SCReference.NAME, new ElConMod(SCReference.NAME, SCReference.VERSION, SCReference.VERSION_URL, event.getSourceFile(), event.getSuggestedConfigurationFile()));
+		ElConCore.registerMod(SCReference.NAME, new ElConMod(SCReference.NAME, SCReference.VERSION, SCReference.VERSION_URL, event.getSourceFile(), event.getSuggestedConfigurationFile(), new SCSaveHandler()));
 
 		SCLog.init();
 
