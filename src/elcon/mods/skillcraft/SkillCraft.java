@@ -31,7 +31,6 @@ public class SkillCraft {
 	public void preInit(FMLPreInitializationEvent event) {
 		ElConCore.registerMod(SCReference.NAME, new ElConMod(SCReference.NAME, SCReference.VERSION, SCReference.VERSION_URL, event.getSourceFile(), event.getSuggestedConfigurationFile()));
 
-		SCLog.setName(SCReference.NAME);
 		SCLog.init();
 
 		PlayerSkill.calculateNeeded();

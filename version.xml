@@ -2,5 +2,5 @@
 <!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
 <properties version="1.0">
 	<comment>Version lookup for SkillCraft. Format is "Current Version Number|URL to update page"</comment>
-	<comment><entry key="Minecraft 1.5.2">pre1g|http://goo.gl/Ria2V</entry></comment>
+	<entry key="Minecraft 1.6.2">0.0.1|[url]</entry>
 </properties>
