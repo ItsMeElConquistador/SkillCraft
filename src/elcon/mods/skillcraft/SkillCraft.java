@@ -54,6 +54,6 @@ public class SkillCraft {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
+		
 	}
 }
