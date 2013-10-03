@@ -2,6 +2,7 @@ package elcon.mods.skillcraft.skills;
 
 import java.util.HashMap;
 
+@Deprecated
 public class SkillClient {
 
 	public static SkillPlayer player;

@@ -2,7 +2,7 @@ package elcon.mods.skillcraft.skills;
 
 import java.io.Serializable;
 
-
+@Deprecated
 public class SkillPlayer implements Serializable {
 
 	private static final long serialVersionUID = 1L;

@@ -1,24 +1,18 @@
 package elcon.mods.skillcraft.skills;
 
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
+public abstract class SkillUnlock {
 
-public class SkillUnlock {
-
+	public static enum UnlockResult {
+		ALLOW,
+		BLOCK,
+		UNKOWN
+	}
+	
 	public int level;
 	
-	public int id = 0;
-	
-	public SkillUnlock(int level, int id) {
+	public SkillUnlock(int level) {
 		this.level = level;
-		this.id = id;
 	}
 	
-	public boolean isBlock() {
-		return Item.itemsList[id] instanceof ItemBlock;
-	}
-	
-	public boolean isItem() {
-		return !isBlock();
-	}
+	public abstract UnlockResult isUnlocked(int currentLevel, Object... args);
 }

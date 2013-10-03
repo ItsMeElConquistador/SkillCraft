@@ -1,33 +1,27 @@
 package elcon.mods.skillcraft.skills;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
-import elcon.mods.skillcraft.skills.types.SkillMining;
+public abstract class Skill {
 
-public class Skill {
-	
-	public static Skill[] skills = new Skill[32];
-	
-	public static int skillCount = 0;
-	
-	public static Skill mining = new SkillMining(0, "Mining");
-	
-	public int id;
 	public String name;
 	
-	public ArrayList<SkillUnlock> unlocks = new ArrayList<SkillUnlock>();
+	public HashMap<String, ArrayList<SkillUnlock>> unlocks = new HashMap<String, ArrayList<SkillUnlock>>();
 	
-	public Skill(int id, String name) {
-		this.id = id;
+	public Skill(String name) {
 		this.name = name;
 		
 		registerUnlocks();
-		
-		skillCount++;
-		skills[id] = this;
 	}
 	
-	public void registerUnlocks() {
-		
+	public void registerUnlock(String unlockType, SkillUnlock unlock) {
+		if(!unlocks.containsKey(unlockType)) {
+			unlocks.put(unlockType, new ArrayList<SkillUnlock>());
+		}
+		ArrayList<SkillUnlock> unlockList = unlocks.get(unlockType);
+		unlockList.add(unlock);
 	}
+	
+	public abstract void registerUnlocks();
 }
