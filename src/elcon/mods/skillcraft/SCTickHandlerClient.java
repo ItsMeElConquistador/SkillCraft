@@ -15,10 +15,6 @@ public class SCTickHandlerClient implements ITickHandler {
 
 	@Override
 	public void tickEnd(EnumSet<TickType> type, Object... tickData) {
-		//Minecraft mc = Minecraft.getMinecraft();
-		//EntityPlayer player = (EntityPlayer) mc.thePlayer;
-		//long time = System.currentTimeMillis();
-
 		if(type.contains(TickType.RENDER)) {
 
 		}

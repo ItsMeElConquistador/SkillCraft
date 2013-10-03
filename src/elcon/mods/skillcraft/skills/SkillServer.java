@@ -2,6 +2,7 @@ package elcon.mods.skillcraft.skills;
 
 import java.util.HashMap;
 
+@Deprecated
 public class SkillServer {
 
 	public static HashMap<String, SkillPlayer> players = new HashMap<String, SkillPlayer>();
