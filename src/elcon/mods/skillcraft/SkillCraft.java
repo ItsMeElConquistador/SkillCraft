@@ -8,14 +8,17 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
+import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
 import elcon.mods.core.ElConCore;
 import elcon.mods.core.ElConMod;
+import elcon.mods.skillcraft.commands.CommandSkill;
 import elcon.mods.skillcraft.skills.PlayerSkill;
 
 @Mod(modid = SCReference.MOD_ID, name = SCReference.NAME, version = SCReference.VERSION, acceptedMinecraftVersions = SCReference.MC_VERSION, dependencies = SCReference.DEPENDENCIES)
-@NetworkMod(clientSideRequired = true, serverSideRequired = false, packetHandler = SCPacketHandler.class, channels = {"SkillCraft"})
+@NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(packetHandler = SCPacketHandler.class, channels = {"SkillCraft"}), clientPacketHandlerSpec = @SidedPacketHandler(packetHandler = SCPacketHandlerClient.class, channels = {"SkillCraft"}))
 public class SkillCraft {
 
 	@Instance(SCReference.MOD_ID)
@@ -55,5 +58,10 @@ public class SkillCraft {
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
 		
+	}
+	
+	@EventHandler
+	public void serverStarting(FMLServerStartingEvent event) {
+		event.registerServerCommand(new CommandSkill());
 	}
 }

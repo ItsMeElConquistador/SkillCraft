@@ -14,5 +14,5 @@ public abstract class SkillUnlock {
 		this.level = level;
 	}
 	
-	public abstract UnlockResult isUnlocked(int currentLevel, Object... args);
+	public abstract UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args);
 }

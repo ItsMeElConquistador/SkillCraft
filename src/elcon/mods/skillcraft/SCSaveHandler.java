@@ -7,7 +7,7 @@ import java.util.HashMap;
 
 import net.minecraft.nbt.NBTTagCompound;
 import elcon.mods.core.IElConSaveHandler;
-import elcon.mods.skillcraft.skills.SkillPlayer;
+import elcon.mods.skillcraft.skills.PlayerSkill;
 import elcon.mods.skillcraft.skills.SkillServer;
 
 public class SCSaveHandler implements IElConSaveHandler {
@@ -26,7 +26,7 @@ public class SCSaveHandler implements IElConSaveHandler {
 	public void load(String fileName, File file, ObjectInputStream in) {
 		try {
 			SkillServer.players.clear();
-			HashMap<String, SkillPlayer> players = (HashMap<String, SkillPlayer>) in.readObject();
+			HashMap<String, HashMap<String, PlayerSkill>> players = (HashMap<String, HashMap<String, PlayerSkill>>) in.readObject();
 			SkillServer.players.putAll(players);
 			SCLog.info("Loaded skills");
 		} catch(Exception e) {

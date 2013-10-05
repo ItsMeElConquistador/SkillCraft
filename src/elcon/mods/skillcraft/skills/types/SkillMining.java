@@ -14,11 +14,11 @@ public class SkillMining extends Skill {
 
 	@Override
 	public void registerUnlocks() {
-		registerUnlock("BLOCK", new SkillUnlockBlock(1, Block.stone.blockID, -1));
-		registerUnlock("BLOCK", new SkillUnlockBlock(1, Block.oreCoal.blockID, -1));
-		registerUnlock("BLOCK", new SkillUnlockBlock(5, Block.oreIron.blockID, -1));
+		registerUnlock("BLOCK_ALL", new SkillUnlockBlock(1, Block.stone.blockID, -1));
+		registerUnlock("BLOCK_ALL", new SkillUnlockBlock(1, Block.oreCoal.blockID, -1));
+		registerUnlock("BLOCK_ALL", new SkillUnlockBlock(5, Block.oreIron.blockID, -1));
 		
-		registerUnlock("ITEM", new SkillUnlockItem(1, Item.pickaxeWood.itemID, -1));
-		registerUnlock("ITEM", new SkillUnlockItem(5, Item.pickaxeStone.itemID, -1));
+		registerUnlock("ITEM_ALL", new SkillUnlockItem(1, Item.pickaxeWood.itemID, -1));
+		registerUnlock("ITEM_ALL", new SkillUnlockItem(5, Item.pickaxeStone.itemID, -1));
 	}
 }

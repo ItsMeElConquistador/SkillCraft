@@ -12,12 +12,14 @@ public class SkillUnlockBlock extends SkillUnlock {
 	}
 	
 	@Override
-	public UnlockResult isUnlocked(int currentLevel, Object... args) {
-		if(args != null && args.length >= 2) {
-			int id = ((Integer) args[0]).intValue();
-			int metadata = ((Integer) args[1]).intValue();
-			if(blockID == id && (blockMetadata == -1 || blockMetadata == metadata)) {
-				return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
+	public UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args) {
+		if(unlockType.equalsIgnoreCase("BLOCK_ALL") || unlockType.equalsIgnoreCase("BLOCK_LEFT") || unlockType.equalsIgnoreCase("BLOCK_RIGHT")) {
+			if(args != null && args.length >= 2) {
+				int id = ((Integer) args[0]).intValue();
+				int metadata = ((Integer) args[1]).intValue();
+				if(blockID == id && (blockMetadata == -1 || blockMetadata == metadata)) {
+					return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
+				}
 			}
 		}
 		return UnlockResult.UNKOWN;

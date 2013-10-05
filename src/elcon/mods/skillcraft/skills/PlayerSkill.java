@@ -2,14 +2,13 @@ package elcon.mods.skillcraft.skills;
 
 import java.io.Serializable;
 
-@Deprecated
 public class PlayerSkill implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 
 	private static int[] needed = new int[100];
 	
-	public int skillID;
+	public String skillName;
 	
 	public int level;
 	public int exp;
@@ -18,8 +17,8 @@ public class PlayerSkill implements Serializable {
 	public int currentExp;
 	public int currentExpNeeded;
 	
-	public PlayerSkill(int skillID) {
-		this.skillID = skillID;
+	public PlayerSkill(String skillName) {
+		this.skillName = skillName;
 		this.level = 1;
 		this.exp = 0;
 		
@@ -28,8 +27,8 @@ public class PlayerSkill implements Serializable {
 		currentExp = exp - getExpNeeded(level - 1);
 	}
 	
-	public PlayerSkill(int skillID, int level, int exp) {
-		this(skillID);
+	public PlayerSkill(String skillName, int level, int exp) {
+		this(skillName);
 		this.level = level;
 		this.exp = exp;
 		

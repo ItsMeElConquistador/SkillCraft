@@ -12,12 +12,14 @@ public class SkillUnlockItem extends SkillUnlock {
 	}
 	
 	@Override
-	public UnlockResult isUnlocked(int currentLevel, Object... args) {
-		if(args != null && args.length >= 2) {
-			int id = ((Integer) args[0]).intValue();
-			int metadata = ((Integer) args[1]).intValue();
-			if(itemID == id && (itemMetadata == -1 || itemMetadata == metadata)) {
-				return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
+	public UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args) {
+		if(unlockType.equalsIgnoreCase("ITEM") || unlockType.equalsIgnoreCase("ITEM_LEFT") || unlockType.equalsIgnoreCase("ITEM_RIGHT")) {
+			if(args != null && args.length >= 2) {
+				int id = ((Integer) args[0]).intValue();
+				int metadata = ((Integer) args[1]).intValue();
+				if(itemID == id && (itemMetadata == -1 || itemMetadata == metadata)) {
+					return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
+				}
 			}
 		}
 		return UnlockResult.UNKOWN;
