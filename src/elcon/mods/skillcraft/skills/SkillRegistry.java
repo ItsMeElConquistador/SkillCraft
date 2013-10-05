@@ -33,6 +33,7 @@ public class SkillRegistry {
 		if(skills.containsKey(skill.name)) {
 			SCLog.warning("[SkillRegistry] Overriding skill: " + skill.name);
 		}
+		skills.put(skill.name, skill);
 	}
 	
 	public static void unregisterSkill(String skillName) {

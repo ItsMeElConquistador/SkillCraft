@@ -2,6 +2,7 @@ package elcon.mods.skillcraft.commands;
 
 import net.minecraft.command.CommandBase;
 import net.minecraft.command.ICommandSender;
+import net.minecraft.command.WrongUsageException;
 
 public class CommandSkill extends CommandBase {
 
@@ -21,8 +22,16 @@ public class CommandSkill extends CommandBase {
 			String commandName = args[0];
 			System.arraycopy(args, 1, args, 0, args.length - 1);
 			if(commandName.equalsIgnoreCase(SCCommands.COMMAND_LIST)) {
-				
+				CommandSkillList.processCommand(commandSender, args);
+			} else if(commandName.equalsIgnoreCase(SCCommands.COMMAND_INFO)) {
+				CommandSkillInfo.processCommand(commandSender, args);
+			} else if(commandName.equalsIgnoreCase(SCCommands.COMMAND_VERSION)) {
+				CommandVersion.processCommand(commandSender, args);
+			} else {
+				throw new WrongUsageException(getCommandUsage(commandSender));
 			}
+		} else {
+			throw new WrongUsageException(getCommandUsage(commandSender));
 		}
 	}
 }

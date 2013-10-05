@@ -16,6 +16,8 @@ import elcon.mods.core.ElConCore;
 import elcon.mods.core.ElConMod;
 import elcon.mods.skillcraft.commands.CommandSkill;
 import elcon.mods.skillcraft.skills.PlayerSkill;
+import elcon.mods.skillcraft.skills.SkillRegistry;
+import elcon.mods.skillcraft.skills.types.SkillMining;
 
 @Mod(modid = SCReference.MOD_ID, name = SCReference.NAME, version = SCReference.VERSION, acceptedMinecraftVersions = SCReference.MC_VERSION, dependencies = SCReference.DEPENDENCIES)
 @NetworkMod(clientSideRequired = true, serverSideRequired = false, serverPacketHandlerSpec = @SidedPacketHandler(packetHandler = SCPacketHandler.class, channels = {"SkillCraft"}), clientPacketHandlerSpec = @SidedPacketHandler(packetHandler = SCPacketHandlerClient.class, channels = {"SkillCraft"}))
@@ -53,6 +55,9 @@ public class SkillCraft {
 		//register event handler
 		SCEventHandler eventHandler = new SCEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
+		
+		//register skills
+		SkillRegistry.registerSkill(new SkillMining());
 	}
 
 	@EventHandler

@@ -8,8 +8,8 @@ import elcon.mods.skillcraft.skills.SkillUnlockItem;
 
 public class SkillMining extends Skill {
 
-	public SkillMining(String name) {
-		super(name);
+	public SkillMining() {
+		super("Mining");
 	}
 
 	@Override

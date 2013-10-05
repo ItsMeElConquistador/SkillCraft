@@ -40,6 +40,10 @@ public class SkillServer {
 		getPlayerSkill(player, skill).addExp(exp);
 	}
 	
+	public static void addLevels(String player, String skill, int levels) {
+		getPlayerSkill(player, skill).addLevels(levels);
+	}
+	
 	public static boolean hasUnlocked(String player, String skill, String unlockType, Object... args) {
 		int level = getPlayerSkill(player, skill).level;
 		ArrayList<SkillUnlock> unlocks = SkillRegistry.getSkill(skill).unlocks.get(unlockType);

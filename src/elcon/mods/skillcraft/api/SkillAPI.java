@@ -58,6 +58,10 @@ public class SkillAPI {
 		SkillServer.addExp(player, skill, exp);
 	}
 	
+	public static void addLevels(String player, String skill, int levels) {
+		SkillServer.addLevels(player, skill, levels);
+	}
+	
 	public static boolean hasUnlocked(String player, String skill, String unlockType, Object... args) {
 		return SkillServer.hasUnlocked(player, skill, unlockType, args);
 	}

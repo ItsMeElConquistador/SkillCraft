@@ -1,7 +1,4 @@
-skillcraft.version.init_log_message=Initializing remote version check against remote version authority, located at
-skillcraft.version.uninitialized=Remote version check failed to initialize properly
-skillcraft.version.current=Currently using the most up to date version (@REMOTE_MOD_VERSION@) of SkillCraft for @MINECRAFT_VERSION@
-skillcraft.version.outdated=A new @MOD_NAME@ version exists (@REMOTE_MOD_VERSION@) for @MINECRAFT_VERSION@. Get it here: @MOD_UPDATE_LOCATION@
-skillcraft.version.general_error=Error while connecting to remote version authority file; trying again
-skillcraft.version.final_error=Version check stopping after three unsuccessful connection attempts
-skillcraft.version.mc_version_not_found=Unable to find a version of @MOD_NAME@ for @MINECRAFT_VERSION@ in the remote version authority
+skillcraft.commands.skill.list=Skills:
+skillcraft.commands.skill.notfound=Skill not found:
+skillcraft.commands.skill.info.line1=Level: %l  Exp: %e / %t
+skillcraft.commands.skill.info.line2=Current Exp: %e / %t
