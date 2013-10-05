@@ -1,4 +1,16 @@
+skillcraft.level=Level
+skillcraft.exp=Total Experience
+skillcraft.currentExp=Experience
+
+skillcraft.commands.skill.help=Help
+skillcraft.commands.skill.help.description=Shows all the commands and their function
 skillcraft.commands.skill.list=Skills:
+skillcraft.commands.skill.list.description=Shows a list of all skills
+skillcraft.commands.skill.info.description=Shows your level and experience for one of your skills
+skillcraft.commands.skill.exp=Given %e experience for %s to %p
+skillcraft.commands.skill.exp.description=Gives a player experience for a certain skill
+skillcraft.commands.skill.level=Given %l levels for %s to %p
+skillcraft.commands.skill.level.description=Gives a player levels for a certain skill
 skillcraft.commands.skill.notfound=Skill not found:
-skillcraft.commands.skill.info.line1=Level: %l  Exp: %e / %t
-skillcraft.commands.skill.info.line2=Current Exp: %e / %t
+skillcraft.commands.skill.version=Current version:
+skillcraft.commands.skill.version.description=Shows the current version of SkillCraft

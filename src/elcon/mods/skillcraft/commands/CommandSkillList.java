@@ -1,5 +1,6 @@
 package elcon.mods.skillcraft.commands;
 
+import elcon.mods.core.color.Color;
 import elcon.mods.core.lang.LanguageManager;
 import elcon.mods.skillcraft.skills.SkillRegistry;
 import net.minecraft.command.ICommandSender;
@@ -14,9 +15,9 @@ public class CommandSkillList {
 				sb.append(skill);
 				sb.append(", ");
 			}
-			commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(LanguageManager.getLocalization("skillcraft.commands.skill.list") + " " + sb.substring(0, sb.length() - 2)));
+			commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(Color.TEXT_COLOR_PREFIX_GOLD + LanguageManager.getLocalization("skillcraft.commands.skill.list") + " " + Color.TEXT_COLOR_PREFIX_YELLOW +  sb.substring(0, sb.length() - 2)));
 		} else {
-			commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(LanguageManager.getLocalization("skillcraft.commands.skill.list") + " "));
+			commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(Color.TEXT_COLOR_PREFIX_GOLD + LanguageManager.getLocalization("skillcraft.commands.skill.list") + " "));
 		}
 	}
 }

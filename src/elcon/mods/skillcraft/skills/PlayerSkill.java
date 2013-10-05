@@ -82,8 +82,8 @@ public class PlayerSkill implements Serializable {
 	}
 	
 	public static void calculateNeeded() {
-		for(int i = 0; i < 100; i++) {
-			needed[i] = i * i * 100;
+		for(int i = 1; i <= 100; i++) {
+			needed[i - 1] = i * i * 100;
 		}
 	}
 	

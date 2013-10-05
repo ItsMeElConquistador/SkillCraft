@@ -3,6 +3,9 @@ package elcon.mods.skillcraft.skills;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+import cpw.mods.fml.common.network.PacketDispatcher;
+
+import elcon.mods.skillcraft.SCPacketHandler;
 import elcon.mods.skillcraft.skills.SkillUnlock.UnlockResult;
 
 public class SkillServer {
@@ -30,18 +33,22 @@ public class SkillServer {
 	
 	public static void addPlayerSkills(String player, HashMap<String, PlayerSkill> skills) {
 		players.put(player, skills);
+		PacketDispatcher.sendPacketToAllPlayers(SCPacketHandler.getSkillUpdatePacket(player));
 	}
 	
 	public static void addPlayerSkill(String player, PlayerSkill skill) {
 		getPlayerSkills(player).put(skill.skillName, skill);
+		PacketDispatcher.sendPacketToAllPlayers(SCPacketHandler.getSkillUpdatePacket(player));
 	}
 
 	public static void addExp(String player, String skill, int exp) {
 		getPlayerSkill(player, skill).addExp(exp);
+		PacketDispatcher.sendPacketToAllPlayers(SCPacketHandler.getSkillUpdatePacket(player));
 	}
 	
 	public static void addLevels(String player, String skill, int levels) {
 		getPlayerSkill(player, skill).addLevels(levels);
+		PacketDispatcher.sendPacketToAllPlayers(SCPacketHandler.getSkillUpdatePacket(player));
 	}
 	
 	public static boolean hasUnlocked(String player, String skill, String unlockType, Object... args) {

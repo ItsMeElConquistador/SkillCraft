@@ -27,7 +27,6 @@ public class SCSaveHandler implements IElConSaveHandler {
 		try {
 			SkillServer.players.clear();
 			HashMap<String, HashMap<String, PlayerSkill>> players = (HashMap<String, HashMap<String, PlayerSkill>>) in.readObject();
-			SkillServer.players.putAll(players);
 			SCLog.info("Loaded skills");
 		} catch(Exception e) {
 			e.printStackTrace();
