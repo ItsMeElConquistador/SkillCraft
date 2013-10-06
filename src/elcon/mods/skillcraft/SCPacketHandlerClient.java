@@ -26,13 +26,20 @@ public class SCPacketHandlerClient implements IPacketHandler {
 		case 0: 
 			handleSkillUpdate(dat);
 			break;
-		case 1:
+		case 1: 
+			handleAllSkillsUpdate(dat);
+			break;
+		case 2:
 			handleSkillAllUpdate(dat);
 			break;
 		}
 	}
-
+	
 	private void handleSkillUpdate(ByteArrayDataInput dat) {
+		SkillClient.addPlayerSkill(dat.readUTF(), new PlayerSkill(dat.readUTF(), dat.readInt(), dat.readInt()));
+	}
+
+	private void handleAllSkillsUpdate(ByteArrayDataInput dat) {
 		String player = dat.readUTF();
 		int size = dat.readInt();
 		HashMap<String, PlayerSkill> skills = new HashMap<String, PlayerSkill>();

@@ -25,12 +25,35 @@ public class SCPacketHandler implements IPacketHandler, IConnectionHandler {
 		
 	}
 	
-	public static Packet getSkillUpdatePacket(String player) {
+	public static Packet getSkillUpdatePacket(String player, String skillName) {
 		try {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			DataOutputStream dos = new DataOutputStream(bos);
 			Packet250CustomPayload packet = new Packet250CustomPayload();
 			dos.writeByte(0);
+			dos.writeUTF(player);
+			PlayerSkill skill = SkillServer.getPlayerSkills(player).get(skillName);
+			dos.writeUTF(skill.skillName);
+			dos.writeInt(skill.level);
+			dos.writeInt(skill.exp);
+			dos.close();
+			packet.channel = "SkillCraft";
+			packet.data = bos.toByteArray();
+			packet.length = bos.size();
+			packet.isChunkDataPacket = false;
+			return packet;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+		return null;
+	}
+	
+	public static Packet getAllSkillsUpdatePacket(String player) {
+		try {
+			ByteArrayOutputStream bos = new ByteArrayOutputStream();
+			DataOutputStream dos = new DataOutputStream(bos);
+			Packet250CustomPayload packet = new Packet250CustomPayload();
+			dos.writeByte(1);
 			dos.writeUTF(player);
 			HashMap<String, PlayerSkill> skills = SkillServer.getPlayerSkills(player);
 			dos.writeInt(skills.size());
@@ -56,7 +79,7 @@ public class SCPacketHandler implements IPacketHandler, IConnectionHandler {
 			ByteArrayOutputStream bos = new ByteArrayOutputStream();
 			DataOutputStream dos = new DataOutputStream(bos);
 			Packet250CustomPayload packet = new Packet250CustomPayload();
-			dos.writeByte(1);
+			dos.writeByte(2);
 			dos.writeInt(SkillServer.players.size());
 			for(String player : SkillServer.players.keySet()) {
 				dos.writeUTF(player);
@@ -84,7 +107,7 @@ public class SCPacketHandler implements IPacketHandler, IConnectionHandler {
 	//SERVER SIDE
 	public void playerLoggedIn(Player player, NetHandler netHandler, INetworkManager manager) {
 		PacketDispatcher.sendPacketToPlayer(getSkillAllUpdatePacket(), player);
-		PacketDispatcher.sendPacketToAllPlayers(getSkillUpdatePacket(netHandler.getPlayer().username));
+		PacketDispatcher.sendPacketToAllPlayers(getAllSkillsUpdatePacket(netHandler.getPlayer().username));
 		SCLog.info("Send all skills to " + netHandler.getPlayer().username);
 	}
 

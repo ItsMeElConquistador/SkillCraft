@@ -23,7 +23,7 @@ public class PlayerSkill implements Serializable {
 		this.exp = 0;
 		
 		expNeeded = getExpNeeded(level);
-		currentExpNeeded = expNeeded - exp;
+		currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 		currentExp = exp;
 	}
 	
@@ -33,7 +33,7 @@ public class PlayerSkill implements Serializable {
 		this.exp = exp;
 		
 		expNeeded = getExpNeeded(level);
-		currentExpNeeded = expNeeded - exp;
+		currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 		currentExp = exp - getExpNeeded(level - 1);
 	}
 	
@@ -43,9 +43,10 @@ public class PlayerSkill implements Serializable {
 			exp = getExpNeeded(100);
 		} else {
 			if(exp > expNeeded) {
-				levelUp();
+				addLevels(1);
 			} else {
-				currentExpNeeded = expNeeded - exp;
+				System.out.println("derp");
+				currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 				currentExp = exp - getExpNeeded(level - 1);
 			}
 		}
@@ -54,14 +55,7 @@ public class PlayerSkill implements Serializable {
 	public void addLevels(int levels) {
 		level += levels;
 		expNeeded = getExpNeeded(level);
-		currentExpNeeded = expNeeded - exp;
-		currentExp = exp - getExpNeeded(level - 1);
-	}
-	
-	public void levelUp() {
-		level++;
-		expNeeded = getExpNeeded(level);
-		currentExpNeeded = expNeeded - exp;
+		currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 		currentExp = exp - getExpNeeded(level - 1);
 	}
 	
@@ -77,7 +71,7 @@ public class PlayerSkill implements Serializable {
 		level = lvl;
 		exp = getExpNeeded(lvl - 1);
 		expNeeded = getExpNeeded(lvl);
-		currentExpNeeded = expNeeded - exp;
+		currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 		currentExp = exp - getExpNeeded(level - 1);
 	}
 	
@@ -88,6 +82,6 @@ public class PlayerSkill implements Serializable {
 	}
 	
 	public static int getExpNeeded(int lvl) {
-		return lvl >= 0 ? 0 : needed[lvl - 1];
+		return lvl <= 0 ? 0 : needed[lvl - 1];
 	}
 }

@@ -17,7 +17,7 @@ public class SkillUnlockItem extends SkillUnlock {
 			if(args != null && args.length >= 2) {
 				int id = ((Integer) args[0]).intValue();
 				int metadata = ((Integer) args[1]).intValue();
-				if(itemID == id && (itemMetadata == -1 || itemMetadata == metadata)) {
+				if(itemID == id && (metadata == -1 || itemMetadata == -1 || itemMetadata == metadata)) {
 					return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
 				}
 			}

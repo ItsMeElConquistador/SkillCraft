@@ -1,5 +1,7 @@
 package elcon.mods.skillcraft.commands;
 
+import java.util.Arrays;
+
 import elcon.mods.core.ElConCore;
 import elcon.mods.core.color.Color;
 import elcon.mods.core.lang.LanguageManager;
@@ -26,21 +28,21 @@ public class CommandSkill extends CommandBase {
 	public void processCommand(ICommandSender commandSender, String[] args) {
 		if(args.length > 0) {
 			String commandName = args[0];
-			System.arraycopy(args, 1, args, 0, args.length - 1);
+			args = Arrays.copyOfRange(args, 1, args.length);
 			if(commandName.equalsIgnoreCase(SCCommands.COMMAND_LIST)) {
 				CommandSkillList.processCommand(commandSender, args);
 			} else if(commandName.equalsIgnoreCase(SCCommands.COMMAND_INFO)) {
 				CommandSkillInfo.processCommand(commandSender, args);
 			} else if(commandName.equalsIgnoreCase(SCCommands.COMMAND_EXP)) {
 				if(args.length >= 2) {
-					SkillServer.getPlayerSkill(args.length >= 3 ? args[2] : commandSender.getCommandSenderName(), args[0]).addExp(Integer.parseInt(args[1]));
+					SkillServer.addExp(args.length >= 3 ? args[2] : commandSender.getCommandSenderName(), args[0], Integer.parseInt(args[1]));
 					commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(LanguageManager.getLocalization("skillcraft.commands.skill.exp").replaceAll("%e", args[1]).replaceAll("%s", args[0]).replaceAll("%p", args.length >= 3 ? args[2] : commandSender.getCommandSenderName())));
 				} else {
 					throw new WrongUsageException(SCCommands.COMMAND_EXP_USAGE);
 				}
 			} else if(commandName.equalsIgnoreCase(SCCommands.COMMAND_LEVEL)) {
 				if(args.length >= 2) {
-					SkillServer.getPlayerSkill(args.length >= 3 ? args[2] : commandSender.getCommandSenderName(), args[0]).addLevels(Integer.parseInt(args[1]));
+					SkillServer.addLevels(args.length >= 3 ? args[2] : commandSender.getCommandSenderName(), args[0], Integer.parseInt(args[1]));
 					commandSender.sendChatToPlayer(ChatMessageComponent.createFromText(LanguageManager.getLocalization("skillcraft.commands.skill.level").replaceAll("%l", args[1]).replaceAll("%s", args[0]).replaceAll("%p", args.length >= 3 ? args[2] : commandSender.getCommandSenderName())));
 				} else {
 					throw new WrongUsageException(SCCommands.COMMAND_LEVEL_USAGE);

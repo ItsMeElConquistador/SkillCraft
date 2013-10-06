@@ -12,7 +12,7 @@ import net.minecraft.util.ChatMessageComponent;
 public class CommandSkillInfo {
 
 	public static void processCommand(ICommandSender commandSender, String[] args) {
-		if(args.length > 0 && !args[0].equalsIgnoreCase("info")) {
+		if(args.length > 0) {
 			String skillName = args[0];
 			if(SkillRegistry.getSkillNames().contains(skillName)) {
 				PlayerSkill skill = SkillServer.getPlayerSkill(commandSender.getCommandSenderName(), skillName);
