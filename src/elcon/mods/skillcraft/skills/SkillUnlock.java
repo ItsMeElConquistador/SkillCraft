@@ -9,10 +9,14 @@ public abstract class SkillUnlock {
 	}
 	
 	public int level;
+	public int exp;
 	
-	public SkillUnlock(int level) {
+	public SkillUnlock(int level, int exp) {
 		this.level = level;
+		this.exp = exp;
 	}
 	
 	public abstract UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args);
+	
+	public abstract int getExpToGive(String unlockType, Object... args);
 }

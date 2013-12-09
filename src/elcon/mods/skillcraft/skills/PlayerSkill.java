@@ -42,10 +42,9 @@ public class PlayerSkill implements Serializable {
 		if(exp > getExpNeeded(100)) {
 			exp = getExpNeeded(100);
 		} else {
-			if(exp > expNeeded) {
+			if(exp >= expNeeded) {
 				addLevels(1);
 			} else {
-				System.out.println("derp");
 				currentExpNeeded = expNeeded - getExpNeeded(level - 1);
 				currentExp = exp - getExpNeeded(level - 1);
 			}

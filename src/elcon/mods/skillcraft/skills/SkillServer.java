@@ -67,4 +67,15 @@ public class SkillServer {
 		}
 		return true;
 	}
+	
+	public static int getExpToGive(String player, String skill, String unlockType, Object... args) {
+		int exp = 0;
+		ArrayList<SkillUnlock> unlocks = SkillRegistry.getSkill(skill).unlocks.get(unlockType);
+		if(unlocks != null) {
+			for(SkillUnlock unlock : unlocks) {
+				exp += unlock.getExpToGive(unlockType, args);
+			}
+		}
+		return exp;
+	}
 }

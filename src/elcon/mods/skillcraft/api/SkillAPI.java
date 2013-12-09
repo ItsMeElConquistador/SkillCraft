@@ -66,6 +66,10 @@ public class SkillAPI {
 		return SkillServer.hasUnlocked(player, skill, unlockType, args);
 	}
 	
+	public static int getExpToGive(String player, String skill, String unlockType, Object... args) {
+		return SkillServer.getExpToGive(player, skill, unlockType, args);
+	}
+	
 	@SideOnly(Side.CLIENT)
 	public static HashMap<String, PlayerSkill> getPlayerSkillsClient(String player) {
 		return SkillClient.getPlayerSkills(player);
