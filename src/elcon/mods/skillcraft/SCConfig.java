@@ -1,9 +1,9 @@
 package elcon.mods.skillcraft;
 
 import net.minecraftforge.common.Configuration;
-import elcon.mods.core.ElConConfig;
+import elcon.mods.core.ECConfig;
 
-public class SCConfig extends ElConConfig {
+public class SCConfig extends ECConfig {
 
 	public SCConfig(Configuration config) {
 		super(config);

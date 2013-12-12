@@ -6,11 +6,11 @@ import java.io.ObjectOutputStream;
 import java.util.HashMap;
 
 import net.minecraft.nbt.NBTTagCompound;
-import elcon.mods.core.IElConSaveHandler;
+import elcon.mods.core.IECSaveHandler;
 import elcon.mods.skillcraft.skills.PlayerSkill;
 import elcon.mods.skillcraft.skills.SkillServer;
 
-public class SCSaveHandler implements IElConSaveHandler {
+public class SCSaveHandler implements IECSaveHandler {
 
 	@Override
 	public String[] getSaveFiles() {

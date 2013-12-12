@@ -12,8 +12,8 @@ import cpw.mods.fml.common.event.FMLServerStartingEvent;
 import cpw.mods.fml.common.network.NetworkMod;
 import cpw.mods.fml.common.network.NetworkMod.SidedPacketHandler;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import elcon.mods.core.ECMod;
 import elcon.mods.core.ElConCore;
-import elcon.mods.core.ElConMod;
 import elcon.mods.skillcraft.commands.CommandSkill;
 import elcon.mods.skillcraft.skills.PlayerSkill;
 import elcon.mods.skillcraft.skills.SkillRegistry;
@@ -34,7 +34,7 @@ public class SkillCraft {
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		ElConCore.registerMod(SCReference.NAME, new ElConMod(SCReference.NAME, SCReference.VERSION, SCReference.VERSION_URL, event.getSourceFile(), event.getSuggestedConfigurationFile(), SCConfig.class, new SCSaveHandler()));
+		ElConCore.registerMod(SCReference.NAME, new ECMod(SCReference.NAME, SCReference.VERSION, SCReference.VERSION_URL, event.getSourceFile(), event.getSuggestedConfigurationFile(), SCConfig.class, new SCSaveHandler()));
 
 		SCLog.init();
 
