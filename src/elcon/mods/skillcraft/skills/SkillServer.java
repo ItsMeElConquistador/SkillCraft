@@ -14,7 +14,6 @@ public class SkillServer {
 	
 	public static HashMap<String, PlayerSkill> getPlayerSkills(String player) {
 		if(!players.containsKey(player)) {
-			System.out.println("new player: " + player);
 			HashMap<String, PlayerSkill> skills = new HashMap<String, PlayerSkill>();
 			for(String skillName : SkillRegistry.getSkillNames()) {
 				skills.put(skillName, new PlayerSkill(skillName));
@@ -28,7 +27,6 @@ public class SkillServer {
 	public static PlayerSkill getPlayerSkill(String player, String skill) {
 		HashMap<String, PlayerSkill> skills = getPlayerSkills(player);
 		if(!skills.containsKey(skill)) {
-			System.out.println("new player skill: " + skill);
 			skills.put(skill, new PlayerSkill(skill));
 			PacketDispatcher.sendPacketToAllPlayers(SCPacketHandler.getSkillUpdatePacket(player, skill));
 		}

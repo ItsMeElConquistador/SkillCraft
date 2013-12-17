@@ -15,12 +15,14 @@ public abstract class Skill {
 		registerUnlocks();
 	}
 	
-	public void registerUnlock(String unlockType, SkillUnlock unlock) {
-		if(!unlocks.containsKey(unlockType)) {
-			unlocks.put(unlockType, new ArrayList<SkillUnlock>());
+	public void registerUnlock(SkillUnlock unlock, String... unlockType) {
+		for(int i = 0; i < unlockType.length; i++) {
+			if(!unlocks.containsKey(unlockType[i])) {
+				unlocks.put(unlockType[i], new ArrayList<SkillUnlock>());
+			}
+			ArrayList<SkillUnlock> unlockList = unlocks.get(unlockType[i]);
+			unlockList.add(unlock);
 		}
-		ArrayList<SkillUnlock> unlockList = unlocks.get(unlockType);
-		unlockList.add(unlock);
 	}
 	
 	public abstract void registerUnlocks();

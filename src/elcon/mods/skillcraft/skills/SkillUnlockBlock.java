@@ -13,10 +13,10 @@ public class SkillUnlockBlock extends SkillUnlock {
 	
 	@Override
 	public UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args) {
-		if(unlockType.equalsIgnoreCase("BLOCK_ALL") || unlockType.equalsIgnoreCase("BLOCK_BREAK") || unlockType.equalsIgnoreCase("BLOCK_PLACE")) {
-			if(args != null && args.length >= 2) {
-				int id = ((Integer) args[0]).intValue();
-				int metadata = ((Integer) args[1]).intValue();
+		if(unlockType.equalsIgnoreCase("BLOCK_BREAK") || unlockType.equalsIgnoreCase("BLOCK_PLACE") || unlockType.equalsIgnoreCase("BLOCK_ACTIVE")) {
+			if(args != null && args.length >= 6) {
+				int id = ((Integer) args[4]).intValue();
+				int metadata = ((Integer) args[5]).intValue();
 				if(blockID == id && (metadata == -1 || blockMetadata == -1 || blockMetadata == metadata)) {
 					return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
 				}
@@ -27,10 +27,10 @@ public class SkillUnlockBlock extends SkillUnlock {
 
 	@Override
 	public int getExpToGive(String unlockType, Object... args) {
-		if(unlockType.equalsIgnoreCase("BLOCK_ALL") || unlockType.equalsIgnoreCase("BLOCK_BREAK") || unlockType.equalsIgnoreCase("BLOCK_PLACE")) {
-			if(args != null && args.length >= 2) {
-				int id = ((Integer) args[0]).intValue();
-				int metadata = ((Integer) args[1]).intValue();
+		if(unlockType.equalsIgnoreCase("BLOCK_BREAK") || unlockType.equalsIgnoreCase("BLOCK_PLACE") || unlockType.equalsIgnoreCase("BLOCK_ACTIVE")) {
+			if(args != null && args.length >= 6) {
+				int id = ((Integer) args[4]).intValue();
+				int metadata = ((Integer) args[5]).intValue();
 				if(blockID == id && (metadata == -1 || blockMetadata == -1 || blockMetadata == metadata)) {
 					return exp;
 				}

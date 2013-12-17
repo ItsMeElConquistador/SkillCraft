@@ -1,5 +1,7 @@
 package elcon.mods.skillcraft.skills;
 
+import net.minecraft.item.ItemStack;
+
 public class SkillUnlockItem extends SkillUnlock {
 
 	public int itemID;
@@ -13,11 +15,10 @@ public class SkillUnlockItem extends SkillUnlock {
 	
 	@Override
 	public UnlockResult hasUnlocked(String unlockType, int currentLevel, Object... args) {
-		if(unlockType.equalsIgnoreCase("ITEM_ALL") || unlockType.equalsIgnoreCase("ITEM_LEFT") || unlockType.equalsIgnoreCase("ITEM_RIGHT")) {
-			if(args != null && args.length >= 2) {
-				int id = ((Integer) args[0]).intValue();
-				int metadata = ((Integer) args[1]).intValue();
-				if(itemID == id && (metadata == -1 || itemMetadata == -1 || itemMetadata == metadata)) {
+		if(unlockType.equalsIgnoreCase("ITEM_HIT") || unlockType.equalsIgnoreCase("ITEM_HIT_BLOCK") || unlockType.equalsIgnoreCase("ITEM_RIGHT")) {
+			if(args != null && args.length >= 1) {
+				ItemStack stack = (ItemStack) args[0];
+				if(itemID == stack.itemID && (stack.getItemDamage() == -1 || itemMetadata == -1 || itemMetadata == stack.getItemDamage())) {
 					return currentLevel >= level ? UnlockResult.ALLOW : UnlockResult.BLOCK;
 				}
 			}
@@ -27,11 +28,10 @@ public class SkillUnlockItem extends SkillUnlock {
 
 	@Override
 	public int getExpToGive(String unlockType, Object... args) {
-		if(unlockType.equalsIgnoreCase("ITEM_ALL") || unlockType.equalsIgnoreCase("ITEM_LEFT") || unlockType.equalsIgnoreCase("ITEM_RIGHT")) {
-			if(args != null && args.length >= 2) {
-				int id = ((Integer) args[0]).intValue();
-				int metadata = ((Integer) args[1]).intValue();
-				if(itemID == id && (metadata == -1 || itemMetadata == -1 || itemMetadata == metadata)) {
+		if(unlockType.equalsIgnoreCase("ITEM_HIT") || unlockType.equalsIgnoreCase("ITEM_HIT_BLOCK") || unlockType.equalsIgnoreCase("ITEM_RIGHT")) {
+			if(args != null && args.length >= 1) {
+				ItemStack stack = (ItemStack) args[0];
+				if(itemID == stack.itemID && (stack.getItemDamage() == -1 || itemMetadata == -1 || itemMetadata == stack.getItemDamage())) {
 					return exp;
 				}
 			}
