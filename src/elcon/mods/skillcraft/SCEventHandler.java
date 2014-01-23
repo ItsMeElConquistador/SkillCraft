@@ -24,10 +24,9 @@ public class SCEventHandler {
 		}
 		for(String skill : SkillRegistry.getSkillNames()) {
 			int exp = SkillServer.getExpToGive(playerName, skill, "BLOCK_BREAK", event.world, event.x, event.y, event.z, blockID, blockMetadata);
-			if(exp == 0) {
-				continue;
+			if(exp != 0) {
+				SkillServer.addExp(playerName, skill, exp);
 			}
-			SkillServer.addExp(playerName, skill, exp);
 		}
 	}
 	
@@ -43,7 +42,14 @@ public class SCEventHandler {
 						return;
 					}
 				}
+				for(String skill : SkillRegistry.getSkillNames()) {
+					int exp = SkillServer.getExpToGive(playerName, skill, "ITEM_HIT_BLOCK", event.entityPlayer.worldObj, event.x, event.y, event.z, stack);
+					if(exp != 0) {
+						SkillServer.addExp(playerName, skill, exp);
+					}					
+				}
 			} else if(event.action == Action.RIGHT_CLICK_BLOCK) {
+				//TODO: change this, because it won't work properly
 				String eventName = event.entityPlayer.isSneaking() ? "ITEM_RIGHT" : "BLOCK_ACTIVATE";
 				Object[] args = new Object[]{event.entityPlayer.isSneaking() ? stack : event.entityPlayer.worldObj, event.x, event.y, event.z};
 				for(String skill : SkillRegistry.getSkillNames()) {
@@ -52,14 +58,11 @@ public class SCEventHandler {
 						return;
 					}
 				}
-				if(event.entityPlayer.isSneaking()) {
-					for(String skill : SkillRegistry.getSkillNames()) {
-						int exp = SkillServer.getExpToGive(playerName, skill, "ITEM_RIGHT", args);
-						if(exp == 0) {
-							continue;
-						}
+				for(String skill : SkillRegistry.getSkillNames()) {
+					int exp = SkillServer.getExpToGive(playerName, skill, eventName, args);
+					if(exp != 0) {
 						SkillServer.addExp(playerName, skill, exp);
-					}
+					}						
 				}
 			} else if(event.action == Action.RIGHT_CLICK_AIR) {
 				for(String skill : SkillRegistry.getSkillNames()) {
@@ -68,14 +71,11 @@ public class SCEventHandler {
 						return;
 					}
 				}
-				if(event.entityPlayer.isSneaking()) {
-					for(String skill : SkillRegistry.getSkillNames()) {
-						int exp = SkillServer.getExpToGive(playerName, skill, "ITEM_RIGHT", stack);
-						if(exp == 0) {
-							continue;
-						}
+				for(String skill : SkillRegistry.getSkillNames()) {
+					int exp = SkillServer.getExpToGive(playerName, skill, "ITEM_RIGHT", stack);
+					if(exp != 0) {
 						SkillServer.addExp(playerName, skill, exp);
-					}
+					}					
 				}
 			}
 		}

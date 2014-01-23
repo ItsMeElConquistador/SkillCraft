@@ -56,6 +56,9 @@ public class SkillCraft {
 		SCEventHandler eventHandler = new SCEventHandler();
 		MinecraftForge.EVENT_BUS.register(eventHandler);
 		
+		//register gui handler
+		NetworkRegistry.instance().registerGuiHandler(this, proxy);
+		
 		//register skills
 		SkillRegistry.registerSkill(new SkillMining());
 	}
